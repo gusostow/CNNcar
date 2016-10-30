@@ -4,14 +4,6 @@ During training mode, the human driver controls the RC car via the laptop keyboa
 
 Run training-server.py on laptop first, then training-client.py on the pi. After a session, training data is saved as pickled numpy arrays in the training-data folder.
 
-### Pi training-client.py script
-
-The role of the pi is simple: passively stream video frames to the laptop as a TCP client.
-
-Before the pi can connect to the laptop server, the host and the port need to match the training-server script. Change these here: `client_socket.connect(("192.168.1.164", 8033))`. The host address is your laptop's local ip address (you can find it by typing `ifconfig` into terminal on the laptop). The port is whatever 4-digit number you chose in the training-server.
-
-Picamera has a module that allows you to capture video frames continuously as numpy arrays to a stream. Here is more information on the [picamera.array module](http://picamera.readthedocs.io/en/release-1.10/api_array.html) and [capturing to a network stream](http://picamera.readthedocs.io/en/release-1.10/recipes1.html#capturing-to-a-network-stream).
-
 ### Laptop training-server.py sript
 
 The laptop has two main functions during training: send steering commands to the car and save training data as numpy matrices.
@@ -27,6 +19,15 @@ The CollectImages method uses a module called pygame to handle keyboard input. A
 2. A vector corresponding to that specific steering action is saved to a steering data matrix.
 
 3. The laptop sends the steering command over usb to the arduino chip to simulate that button press from the remote control. This step actually controls the car, which is important.
+
+
+### Pi training-client.py script
+
+The role of the pi is simple: passively stream video frames to the laptop as a TCP client.
+
+Before the pi can connect to the laptop server, the host and the port need to match the training-server script. Change these here: `client_socket.connect(("192.168.1.164", 8033))`. The host address is your laptop's local ip address (you can find it by typing `ifconfig` into terminal on the laptop). The port is whatever 4-digit number you chose in the training-server script.
+
+Picamera has a module that allows you to capture video frames continuously as numpy arrays to a stream. Here is more information on the [picamera.array module](http://picamera.readthedocs.io/en/release-1.10/api_array.html) and [capturing to a network stream](http://picamera.readthedocs.io/en/release-1.10/recipes1.html#capturing-to-a-network-stream).
 
 
 ## Credit
