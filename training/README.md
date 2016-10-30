@@ -15,9 +15,9 @@ As soon as the CollectTrainingData class is initialized, it sets up the laptop t
 After the pi connects to the laptop, the CollectImages method starts and the driver can begin operating the car with the keyboard arrow keys. The laptop is now receiving video frames one by one from the pi. Every frame needs to be temporarily saved and decoded into an unraveled numpy matrix (so instead of 320x240x3, it’s saved as a flattened 230,400 vector). If the driver is currently making a steering command (pressing an arrow key) the script saves the temporary frame, otherwise it is discarded when as the process moves to the next streamed frame.
 
 The CollectImages method uses a module called pygame to handle keyboard input. Although it was designed for computer games, it works just fine for controlling an RC car IRL. Every time pygame detects a keypress three things happen:
-The current, temporary video frame is saved to a more permanent image data matrix.
-A vector corresponding to that specific steering action is saved to a steering data matrix.
-The laptop sends the steering command over usb to the arduino chip to simulate that button press from the remote control. This step actually controls the car, which is important.
+1. The current, temporary video frame is saved to a more permanent image data matrix.
+2. A vector corresponding to that specific steering action is saved to a steering data matrix.
+3. The laptop sends the steering command over usb to the arduino chip to simulate that button press from the remote control. This step actually controls the car, which is important.
 
 
 ## Credit
