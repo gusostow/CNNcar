@@ -2,7 +2,7 @@
 
 During training mode, the human driver controls the RC car via the laptop keyboard to collect data. These data are video frames captured  by the car’s onboard picamera and the driver’s steering commands. The raspberry pi continuously captures and transmits frames wirelessly to the laptop. Every time the driver makes a steering command, both the current frame and that particular command are saved to numpy matrices. Only video frames that are associated with a steering command are saved.
 
-Run training-server.py on laptop first, then training-client.py on the pi. After a session, training data is saved as pickled numpy arrays in the training-data folder.
+**Directions:** Run training-server.py on laptop first, then training-client.py on the pi. Control the car with the laptop's arrow keys. After a session, training data is saved as pickled numpy arrays in the training-data folder.
 
 ### Laptop training-server.py sript
 
